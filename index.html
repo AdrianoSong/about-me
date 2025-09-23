@@ -1,208 +1,297 @@
-<!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Adriano Song: About Me</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adriano Song — About Me</title>
+  <meta name="description" content="Senior iOS engineer. Brazil‑based, US‑timezone friendly. About me, experience, values, and how to get in touch." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b0c0f; /* deep charcoal */
+      --bg-soft: #12141a;
+      --card: #151821;
+      --text: #e7ebf3;
+      --muted: #a8b0c3;
+      --brand: #7cdbff; /* soft cyan */
+      --accent: #9b8cff; /* soft violet */
+      --ring: #3b82f6;
+      --max: 1024px;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --bg-soft:#ffffff; --card:#ffffff; --text:#11141a; --muted:#4b5568; --shadow:0 10px 20px rgba(17,20,26,.08); }
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font: 16px/1.6 ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(124,219,255,.12), transparent 60%),
+                  radial-gradient(900px 600px at -10% 20%, rgba(155,140,255,.12), transparent 60%), var(--bg);
+      color:var(--text);
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    /* Layout */
+    .shell{max-width:var(--max); margin:0 auto; padding: clamp(16px, 4vw, 32px)}
+    header.site{
+      position:sticky; top:0; z-index:20; backdrop-filter:saturate(1.5) blur(10px);
+      background: color-mix(in oklab, var(--bg), transparent 70%);
+      border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 92%);
+    }
+    .site-inner{display:flex; align-items:center; gap:16px}
+    .logo{font-weight:800; letter-spacing:.3px}
+    nav a{color:var(--text); opacity:.7; padding:10px 12px; border-radius:10px; display:inline-flex}
+    nav a[aria-current="true"], nav a:hover{opacity:1; background: color-mix(in oklab, var(--text), transparent 92%)}
+    .grow{flex:1}
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<!-- <span class="logo"><img src="images/logo.svg" alt="" /></span> -->
-						<h1>Adriano Song</h1>
-						<p>Senior Mobile Developer<br />
-					</header>
+    /* Hero */
+    .hero{display:grid; grid-template-columns: 1.2fr .8fr; gap:32px; align-items:center; padding-block: min(12vh, 96px)}
+    .hero h1{font-size:clamp(28px, 5vw, 56px); line-height:1.1; margin:0 0 12px}
+    .kicker{color:var(--muted); font-weight:600; letter-spacing:.2px}
+    .hero p{font-size:clamp(16px, 2.2vw, 20px); color:var(--muted)}
+    .portrait{
+      width:100%; aspect-ratio:1/1; border-radius:24px; background: linear-gradient(135deg, rgba(124,219,255,.2), rgba(155,140,255,.2));
+      display:grid; place-items:center; overflow:hidden; box-shadow: var(--shadow);
+    }
+    .portrait img{width:100%; height:100%; object-fit:cover; filter:saturate(1.05);}
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active">About Me</a></li>
-							<li><a href="#first">My Portfolio</a></li>
-							<!-- <li><a href="#second">Second Section</a></li> -->
-							<li><a href="#cta">Contact Me</a></li>
-						</ul>
-					</nav>
+    /* Cards */
+    .grid{display:grid; gap:16px}
+    .cols-3{grid-template-columns: repeat(3, 1fr)}
+    .cols-2{grid-template-columns: repeat(2, 1fr)}
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} .cols-3{grid-template-columns:1fr} .cols-2{grid-template-columns:1fr} }
 
-				<!-- Main -->
-					<div id="main">
+    .card{background:linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 0%), color-mix(in oklab, var(--bg-soft), transparent 10%));
+      border:1px solid color-mix(in oklab, var(--text), transparent 92%);
+      padding:20px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px; font-size:1.05rem}
+    .muted{color:var(--muted)}
 
-						<!-- Introduction -->
-							<section id="intro" class="main">
-								<div class="spotlight">
-									<div class="content">
-										<header class="major">
-											<h2>About Me</h2>
-										</header>
-										<p>10 years as software developer, in 2013 I started to work with Android platform and also started my mobile developer career. Since 2016, I started to work with iOS development too. My most recent projects is in iOS platform.</p>
-										<p>All my professional career is focused on big tech projects, from TELCO to banks passing through woman's health and retail projects in Brazil and in US.</p>
-										<ul class="actions">
-											<a class="button" href="docs/AdrianoSong.pdf" download>
-												Download my CV
-											</a>
-										</ul>
-									</div>
-									<span class="image"><img src="images/profile.png" alt="" /></span>
-								</div>
-							</section>
+    /* Section headings */
+    section{padding-block: clamp(36px, 9vw, 96px)}
+    section h2{font-size: clamp(22px, 3.2vw, 34px); margin:0 0 12px}
 
-						<!-- First Section -->
-							<section id="first" class="main special">
-								<header class="major">
-									<h2>My Portfolio</h2>
-								</header>
-								<ul class="features">
-									<li>
-										<span class="image"><img src="images/btcPriceNow.png" alt="" width="200" height="200"></span>
-										<h3>BTC Price Now</h3>
-										<p>iOS app tool for tracking Bitcoin price.</p>
-										<a href="https://apps.apple.com/us/app/btc-price-now/id1539543414">View on US App Store</a>
-									</li>
-									<li>
-										<span class="image"><img src="images/spoton.png" alt="" width="200" height="200"></span>
-										<h3>Spot On Period Tracker</h3>
-										<p>iOS app project for woman's health.</p>
-										<a href="https://apps.apple.com/us/app/spot-on-period-tracker/id1039914781">View on US App Store</a>
-									</li>
-									<li>
-										<span class="image"><img src="images/itauEmpresas.png" alt="" width="200" height="200"></span>
-										<h3>Banco Itaú Empresas: MEI e PJ</h3>
-										<p>iOS banking app only for companies accounts.</p>
-										<a href="https://apps.apple.com/br/app/banco-itaú-empresas/id348274534">View on Brazil App Store</a>
-									</li>
-									<li>
-										<span class="image"><img src="images/safraEmpresas.png" alt="" width="200" height="200"></span>
-										<h3>Safra Empresas</h3>
-										<p>iOS banking app only for companies accounts.</p>
-										<a href="https://apps.apple.com/br/app/safra-empresas/id417297468">View on Brazil App Store</a>
-									</li>
-									<li>
-										<span class="image"><img src="images/meuTim.png" alt="" width="200" height="200"></span>
-										<h3>MEU TIM</h3>
-										<p>Android TELCO app.</p>
-										<a href="https://play.google.com/store/apps/details?id=br.com.timbrasil.meutim&hl=pt_BR&gl=US">View on Brazil Google Play Store</a>
-									</li>
-									<li>
-										<span class="image"><img src="images/pernambucanas.png" alt="" width="200" height="200"></span>
-										<h3>Cartão Pernambucanas</h3>
-										<p>iOS banking app only for regular people account.</p>
-										<a href="https://apps.apple.com/br/app/cartão-pernambucanas/id1046562246">View on Brazil App Store</a>
-									</li>
-								</ul>
-								<!-- <footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer> -->
-							</section>
+    /* Timeline */
+    .timeline{position:relative; margin-left:10px}
+    .timeline::before{content:""; position:absolute; top:0; bottom:0; left:0; width:2px; background: color-mix(in oklab, var(--text), transparent 88%)}
+    .t-item{position:relative; padding-left:20px; margin-block:18px}
+    .t-item::before{content:""; position:absolute; left:-6px; top:6px; width:12px; height:12px; border-radius:50%; background:linear-gradient(180deg, var(--brand), var(--accent)); box-shadow:0 0 0 3px color-mix(in oklab, var(--text), transparent 90%)}
 
-						<!-- Second Section -->
-							<!-- <section id="second" class="main special">
-								<header class="major">
-									<h2>Ipsum consequat</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-								</header>
-								<ul class="statistics">
-									<li class="style1">
-										<span class="icon solid fa-code-branch"></span>
-										<strong>5,120</strong> Etiam
-									</li>
-									<li class="style2">
-										<span class="icon fa-folder-open"></span>
-										<strong>8,192</strong> Magna
-									</li>
-									<li class="style3">
-										<span class="icon solid fa-signal"></span>
-										<strong>2,048</strong> Tempus
-									</li>
-									<li class="style4">
-										<span class="icon solid fa-laptop"></span>
-										<strong>4,096</strong> Aliquam
-									</li>
-									<li class="style5">
-										<span class="icon fa-gem"></span>
-										<strong>1,024</strong> Nullam
-									</li>
-								</ul>
-								<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section> -->
+    /* Footer */
+    footer{padding:32px 0; color:var(--muted)}
 
-						<!-- Get Started -->
-							<section id="cta" class="main special">
-								<header class="major">
-									<h2>Contact Me</h2>
-									<p>If you want some more info or you just want to say hi, please fill up the form bellow.</p>
-								</header>
-								<div class="containerForm">
-									<form action="mailto:adrianosong@hotmail.com" method="GET">
-										<dl class="alt">
-											<dt>Subject:</dt>
-											<input type="text" name="subject" placeholder="Job offer">
-										</br>
-											<dt>Body:</dt>
-										<textarea name="body" placeholder="Write your body message here..." style="height:200px"></textarea>
-										</dl>
-									</br>
-									  <input class="button primary" type="submit" value="Compose e-mail">
-									</form>
-								  </div>
-								<!-- <footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer> -->
-							</section>
+    /* Reveal on scroll */
+    [data-reveal]{opacity:0; transform: translateY(14px) scale(.98); transition: opacity .7s ease, transform .7s ease}
+    .is-visible{opacity:1 !important; transform: none !important}
+    .fade-out{opacity:1; transition: opacity .6s ease}
+    .fade-out.is-exiting{opacity:.08}
 
-					</div>
+    @media (prefers-reduced-motion: reduce){
+      [data-reveal]{opacity:1 !important; transform:none !important}
+      .fade-out,.fade-out.is-exiting{opacity:1}
+    }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h2>&copy; 2020 Adriano Song</h2>
-							<p>Never give up. Today is hard, tomorrow will be worse, but the day after tomorrow will be sunshine. - Jack Ma</p>
-							<!-- <ul class="actions">
-								<li><a href="generic.html" class="button">Learn More</a></li>
-							</ul> -->
-						</section>
-						<section>
-							<h2>Location</h2>
-							<p>São Paulo &bull; Brazil</p>
-							<ul class="icons">
-								<li><a href="https://br.linkedin.com/in/adriano-song-b5141624" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
-								<li><a href="https://github.com/AdrianoSong" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-								<li><a href="https://twitter.com/songAdriano" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-							</ul>
-						</section>
-						<p class="copyright">Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
+    /* Buttons */
+    .btn{display:inline-flex; gap:10px; align-items:center; padding:10px 14px; border-radius:12px;
+      border:1px solid color-mix(in oklab, var(--text), transparent 88%); background: color-mix(in oklab, var(--card), transparent 10%);
+    }
+    .btn:hover{box-shadow: var(--shadow)}
 
-			</div>
+    /* Avatar chip */
+    .chip{display:inline-flex; align-items:center; gap:10px; padding:6px 10px; border-radius:999px; border:1px solid color-mix(in oklab, var(--text), transparent 90%); background: color-mix(in oklab, var(--card), transparent 12%)}
+    .chip img{width:24px; height:24px; border-radius:50%; object-fit:cover}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    /* Visually hidden for a11y */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="shell site-inner">
+      <div class="logo">Adriano Song</div>
+      <nav aria-label="Primary">
+        <a href="#about" aria-current="true">About</a>
+        <a href="#work">Highlights</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="grow"></div>
+      <a class="btn" href="https://br.linkedin.com/in/adriano-song-b5141624">LinkedIn</a>
+    </div>
+  </header>
 
-	</body>
+  <main>
+    <section class="shell hero" id="about">
+      <div data-reveal>
+        <div class="chip" aria-hidden="true">
+          <img src="images/profile.png" alt=""/>
+          Senior iOS Engineer · Brazil → EST/PDT/PST friendly
+        </div>
+        <h1>Building thoughtful mobile experiences with modern iOS frameworks and tools.</h1>
+        <p>Over a decade in software, with 9+ years focused on iOS. I partner with teams across the US and global to ship reliable, accessible across diverse industries, such as telecommunications, insurance, finance, and healthcare. I’m also a co‑creator of <strong>NSFlow</strong>, Brazil’s most active iOS community.</p>
+        <p>
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn" href="#work">See highlights</a>
+        </p>
+      </div>
+      <div class="portrait fade-out" id="portrait">
+        <img src="images/profile.png" alt="Portrait of Adriano Song"/>
+      </div>
+    </section>
+
+    <section class="shell" aria-labelledby="exp-title">
+      <h2 id="exp-title" data-reveal>Experience snapshot</h2>
+      <div class="grid cols-3">
+        <article class="card" data-reveal>
+          <h3>Platforms & Focus</h3>
+          <p class="muted">iOS (SwiftUI, Combine, async/await), iPadOS, tvOS; modular architecture, design systems, accessibility, performance.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Domains</h3>
+          <p class="muted">Banking & Fintech, Telco, Retail/Loyalty, Health, Insurance. Enterprise‑grade reliability at scale.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Collaboration</h3>
+          <p class="muted">Brazil‑based with EST/PDT/PST overlap. Remote‑first communication, crisp documentation, async friendly.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" id="work" aria-labelledby="work-title">
+      <h2 id="work-title" data-reveal>Selected highlights</h2>
+      <div class="grid cols-2">
+        <article class="card" data-reveal>
+          <h3>AAA: Auto Club App (iOS)</h3>
+          <p class="muted">Collaborated on development of app new version. Focus on core experience, new features, old features portability, stability and accessibility, safe concurrency, and modern SwiftUI patterns.</p>
+          <p><a href="https://apps.apple.com/br/app/auto-club-app/id1094393125">App Store</a></p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>FOX LOCAL: Live News & Weather (iOS)</h3>
+          <p class="muted">Collaborated on development of app new version. Focus on core experience, features, stability and accessibility, safe concurrency, and modern SwiftUI patterns.</p>
+          <p><a href="https://apps.apple.com/us/app/fox-local-live-news-weather/id6443995100">App Store</a></p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>SiriusXM: Music, Sports & News (iOS, iPadOS, tvOS)</h3>
+          <p class="muted">Collaborated on development of first version. Focus on features, stability and accessibility, safe concurrency, and modern SwiftUI patterns.</p>
+          <p><a href="https://apps.apple.com/us/app/siriusxm-music-sports-news/id317951436">App Store</a></p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>all.health (iOS)</h3>
+          <p class="muted">Collaborated on development of first version. Focus on features, stability and accessibility, safe concurrency, and modern SwiftUI patterns.</p>
+          <p><a href="https://apps.apple.com/us/app/all-health/id1668893392">App Store</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" id="community" aria-labelledby="community-title">
+      <h2 id="community-title" data-reveal>Community</h2>
+      <div class="grid cols-2">
+        <article class="card" data-reveal>
+          <h3>NSFlow — Brazilian iOS Community</h3>
+          <p class="muted">Co‑creator of a welcoming space where hundreds of engineers learn, share, and grow through content, events, and collaboration.</p>
+          <p><a href="https://br.linkedin.com/in/adriano-song-b5141624">Ask me about speaking, mentoring, or partnerships</a></p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>What I value</h3>
+          <ul class="muted">
+            <li>Shipping small, measurable improvements</li>
+            <li>Human‑centered design & accessibility</li>
+            <li>Clear naming, clear docs, clear APIs</li>
+            <li>Community over competition</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" aria-labelledby="timeline-title">
+      <h2 id="timeline-title" data-reveal>Path so far</h2>
+      <div class="timeline" aria-label="timeline">
+        <div class="t-item" data-reveal>
+          <strong>2010 →</strong> First developer internship program - Brazil.
+        </div>
+        <div class="t-item" data-reveal>
+          <strong>2013 →</strong> Started Android developer career - Brazil.
+        </div>
+        <div class="t-item" data-reveal>
+          <strong>2016 →</strong> Started transition to iOS; telco, banking, retail, health. Lead features & modernize stacks - Brazil.
+        </div>
+        <div class="t-item" data-reveal>  
+          <strong>2019 →</strong> First international iOS project; Planned Parenthood: Spot On Period Tracker - USA.
+        </div>
+        <div class="t-item" data-reveal>  
+          <strong>2020 →</strong> NSFlow iOS community created.
+        </div>
+        <div class="t-item" data-reveal>
+          <strong>Today →</strong> Senior iOS Engineer; SwiftUI, Combine, async/await.
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" data-reveal>Let’s build something great together!</h2>
+      <div class="grid cols-2">
+        <aside class="card" data-reveal>
+          <h3>Elsewhere</h3>
+          <p class="muted">São Paulo, Brazil · EST/PDT/PST compatible</p>
+          <p><a href="mailto:adrianosong@hotmail.com">adrianosong@hotmail.com</a><br>
+             <a href="https://github.com/AdrianoSong">GitHub</a> ·
+             <a href="https://twitter.com/songAdriano">Twitter</a> ·
+             <a href="https://br.linkedin.com/in/adriano-song-b5141624">LinkedIn</a></p>
+          <p class="muted">Resume available on request.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">"Never give up. Today is hard, tomorrow will be worse, but the day after tomorrow will be sunshine." — Ma, Jack <br><br> © <span id="year"></span> Adriano Song </div>
+  </footer>
+
+  <script>
+    // IntersectionObserver: reveal on scroll
+    const opts = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.12 };
+    const io = new IntersectionObserver((entries)=>{
+      for(const e of entries){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      }
+    }, opts);
+    document.querySelectorAll('[data-reveal]').forEach(el=> io.observe(el));
+
+    // Sticky nav highlight
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const navLinks = [...document.querySelectorAll('header nav a')];
+    const highlight = () => {
+      let current = sections[0].id;
+      for(const s of sections){
+        const rect = s.getBoundingClientRect();
+        if(rect.top <= 120 && rect.bottom >= 120){ current = s.id; break; }
+      }
+      navLinks.forEach(a=> a.setAttribute('aria-current', a.getAttribute('href') === '#' + current ? 'true' : 'false'));
+    };
+    document.addEventListener('scroll', highlight, {passive:true});
+    window.addEventListener('load', highlight);
+
+    // Fade portrait when leaving hero
+    const fadeIo = new IntersectionObserver((entries)=>{
+      entries.forEach(e => {
+        document.getElementById('portrait').classList.toggle('is-exiting', !e.isIntersecting);
+      })
+    }, {root:null, threshold: 0.4});
+    fadeIo.observe(document.getElementById('about'));
+
+    // Mailto composer
+    function compose(ev){
+      ev.preventDefault();
+      const subject = encodeURIComponent(document.getElementById('subj').value);
+      const body = encodeURIComponent(document.getElementById('body').value);
+      window.location.href = `mailto:adrianosong@hotmail.com?subject=${subject}&body=${body}`;
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
